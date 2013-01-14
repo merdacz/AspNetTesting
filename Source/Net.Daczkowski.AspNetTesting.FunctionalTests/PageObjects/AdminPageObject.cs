@@ -3,6 +3,7 @@
     using System.Globalization;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.PageObjects;
 
     public class AdminPageObject : PageObject
     {
@@ -10,6 +11,9 @@
             : base(driver)
         {
         }
+
+        [FindsBy(How = How.LinkText, Using = "Go to home page")]
+        public IWebElement HomePageLink { get; set; }
 
         protected override string RelativeLocation
         {
@@ -28,21 +32,8 @@
             }
         }
 
-        private IWebElement ChangePriceButton
-        {
-            get
-            {
-                return this.Driver.FindElement(By.ClassName("data-automation-changeprice"));
-            }
-        }
-
-        private IWebElement HomePageLink
-        {
-            get
-            {
-                return this.Driver.FindElement(By.LinkText("Go to home page"));
-            }
-        }
+        [FindsBy(How = How.ClassName, Using = "data-automation-changeprice")]
+        private IWebElement ChangePriceButton { get; set; }
 
         public AdminPageObject ChangePriceForFirstItem()
         {
@@ -50,6 +41,9 @@
             var newValue = decimal.Parse(oldValue, CultureInfo.InvariantCulture) + 1;
             this.PriceEntry.Clear();
             this.PriceEntry.SendKeys(newValue.ToString(CultureInfo.InvariantCulture));
+            
+            // something really bad is going on here
+            PageFactory.InitElements(this.Driver, this);
             this.ChangePriceButton.Click();
             return this;
         }

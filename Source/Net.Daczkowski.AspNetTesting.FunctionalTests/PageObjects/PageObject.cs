@@ -4,6 +4,7 @@
     using System.Configuration;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.PageObjects;
     using OpenQA.Selenium.Support.UI;
 
     public abstract class PageObject
@@ -19,6 +20,7 @@
             }
 
             this.Driver.Navigate().GoToUrl(absoluteUrl);
+            PageFactory.InitElements(this.Driver, this);
         }
 
         protected IWebDriver Driver { get; private set; }

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.PageObjects;
 
     public class HomePageObject : PageObject
     {
@@ -11,14 +12,13 @@
         {
         }
 
+        [FindsBy(How = How.ClassName, Using = "data-automation-message-cartitem-name")]
         public IWebElement FirstCartItem
         {
-            get
-            {
-                return this.Driver.FindElement(By.ClassName("data-automation-cartitem-name"));
-            }
+            get; set; 
         }
 
+        // no support for lists in current PageFactory
         public IList<IWebElement> PriceChangeNotifications
         {
             get
@@ -44,13 +44,8 @@
             }
         }
 
-        private IWebElement AdminDashboardLink
-        {
-            get
-            {
-                return this.Driver.FindElement(By.LinkText("Go to admin dashboard"));
-            }
-        }
+        [FindsBy(How = How.LinkText, Using = "Go to admin dashboard")]
+        private IWebElement AdminDashboardLink { get; set; }
 
         public HomePageObject BuyFirstItem()
         {
