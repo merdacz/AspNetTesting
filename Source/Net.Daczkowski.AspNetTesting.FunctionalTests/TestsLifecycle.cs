@@ -14,5 +14,11 @@
             var culture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = culture;
         }
+
+        [TearDown]
+        public void QuitDrivers()
+        {
+            SeleniumFactory.GetInstance().QuitAll();
+        }
     }
 }

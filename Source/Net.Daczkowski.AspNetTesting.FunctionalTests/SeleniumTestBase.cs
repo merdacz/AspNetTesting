@@ -4,7 +4,6 @@
 
     using OpenQA.Selenium;
 
-    [TestFixture]
     public abstract class SeleniumTestBase
     {
         private readonly string driverName;
@@ -33,7 +32,8 @@
                 return;
             }
 
-            this.Driver.Quit();
+            this.Driver.Close();
+            this.Driver = null;
         }
     }
 }

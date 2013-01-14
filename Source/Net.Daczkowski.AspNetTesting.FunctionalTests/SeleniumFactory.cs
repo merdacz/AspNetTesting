@@ -8,7 +8,6 @@
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
-    using OpenQA.Selenium.PhantomJS;
     using OpenQA.Selenium.Remote;
 
     public class SeleniumFactory
@@ -20,8 +19,6 @@
         private InternetExplorerDriverService internetExplorerDriverService;
 
         private ChromeDriverService chromeDriverService;
-
-        private PhantomJSDriverService phantomJsDriverService;
 
         private SeleniumFactory()
         {
@@ -41,10 +38,24 @@
                     driver = new FirefoxDriver();
                     break;
                 case "InternetExplorerDriver":
-                    driver = new InternetExplorerDriver(GetDriverDirectory());
+                    if (this.internetExplorerDriverService == null)
+                    {
+                        this.internetExplorerDriverService =
+                            InternetExplorerDriverService.CreateDefaultService(GetDriverDirectory());
+                        this.internetExplorerDriverService.Start();
+                    }
+
+                    driver = new RemoteWebDriver(
+                        this.internetExplorerDriverService.ServiceUrl, DesiredCapabilities.InternetExplorer());
                     break;
                 case "ChromeDriver":
-                    driver = new ChromeDriver(GetDriverDirectory());
+                    if (this.chromeDriverService == null)
+                    {
+                        this.chromeDriverService = ChromeDriverService.CreateDefaultService(GetDriverDirectory());
+                        this.chromeDriverService.Start();
+                    }
+
+                    driver = new RemoteWebDriver(this.chromeDriverService.ServiceUrl, DesiredCapabilities.Chrome());
                     break;
                 default:
                     throw new NotImplementedException("Unsupported Selenium web driver. ");
@@ -53,6 +64,19 @@
             driver.Manage().Window.Maximize();
             this.registered.Add(driver);
             return driver;
+        }
+
+        public void QuitAll()
+        {
+            if (this.chromeDriverService != null)
+            {
+                this.chromeDriverService.Dispose();
+            }
+
+            if (this.internetExplorerDriverService != null)
+            {
+                this.internetExplorerDriverService.Dispose();
+            }
         }
 
         private static string GetDriverDirectory()

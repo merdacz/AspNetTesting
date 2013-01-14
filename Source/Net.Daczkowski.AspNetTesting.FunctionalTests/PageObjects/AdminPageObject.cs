@@ -12,8 +12,13 @@
         {
         }
 
-        [FindsBy(How = How.LinkText, Using = "Go to home page")]
-        public IWebElement HomePageLink { get; set; }
+        public IWebElement HomePageLink
+        {
+            get
+            {
+                return this.Driver.FindElement(By.LinkText("Go to home page"));
+            }
+        }
 
         protected override string RelativeLocation
         {
@@ -32,8 +37,13 @@
             }
         }
 
-        [FindsBy(How = How.ClassName, Using = "data-automation-changeprice")]
-        private IWebElement ChangePriceButton { get; set; }
+        private IWebElement ChangePriceButton
+        {
+            get
+            {
+                return this.Driver.FindElement(By.ClassName("data-automation-changeprice"));
+            }
+        }
 
         public AdminPageObject ChangePriceForFirstItem()
         {
@@ -42,8 +52,6 @@
             this.PriceEntry.Clear();
             this.PriceEntry.SendKeys(newValue.ToString(CultureInfo.InvariantCulture));
             
-            // something really bad is going on here
-            PageFactory.InitElements(this.Driver, this);
             this.ChangePriceButton.Click();
             return this;
         }

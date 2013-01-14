@@ -18,12 +18,20 @@
             get; set; 
         }
 
-        // no support for lists in current PageFactory
         public IList<IWebElement> PriceChangeNotifications
         {
             get
             {
                 return this.Driver.FindElements(By.ClassName("data-automation-message-pricechanged"));
+            }
+        }
+
+        public decimal TotalPrice
+        {
+            get
+            {
+                var value = this.Driver.FindElement(By.ClassName("data-automation-totalprice")).Text;
+                return decimal.Parse(value);
             }
         }
 
@@ -44,8 +52,13 @@
             }
         }
 
-        [FindsBy(How = How.LinkText, Using = "Go to admin dashboard")]
-        private IWebElement AdminDashboardLink { get; set; }
+        private IWebElement AdminDashboardLink
+        {
+            get
+            {
+                return this.Driver.FindElement(By.LinkText("Go to admin dashboard"));
+            }
+        }
 
         public HomePageObject BuyFirstItem()
         {

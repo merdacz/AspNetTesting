@@ -20,7 +20,6 @@
             }
 
             this.Driver.Navigate().GoToUrl(absoluteUrl);
-            PageFactory.InitElements(this.Driver, this);
         }
 
         protected IWebDriver Driver { get; private set; }
