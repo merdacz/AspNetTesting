@@ -12,12 +12,6 @@
         {
         }
 
-        [FindsBy(How = How.ClassName, Using = "data-automation-message-cartitem-name")]
-        public IWebElement FirstCartItem
-        {
-            get; set; 
-        }
-
         public IList<IWebElement> PriceChangeNotifications
         {
             get
