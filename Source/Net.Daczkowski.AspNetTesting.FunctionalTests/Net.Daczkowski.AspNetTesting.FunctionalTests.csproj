@@ -62,6 +62,7 @@
     <Compile Include="PageObjects\AdminPageObject.cs" />
     <Compile Include="CartTests.cs" />
     <Compile Include="PageObjects\HomePageObject.cs" />
+    <Compile Include="PageObjects\PageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

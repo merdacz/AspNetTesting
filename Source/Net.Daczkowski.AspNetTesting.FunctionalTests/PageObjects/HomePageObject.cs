@@ -1,35 +1,21 @@
-﻿namespace Net.Daczkowski.AspNetTesting.FunctionalTests
+﻿namespace Net.Daczkowski.AspNetTesting.FunctionalTests.PageObjects
 {
-    using System;
     using System.Collections.Generic;
-    using System.Configuration;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Support.UI;
 
-    public class HomePageObject
+    public class HomePageObject : PageObject
     {
-        private readonly IWebDriver driver;
-
-        private readonly WebDriverWait wait;
-
         public HomePageObject(IWebDriver driver)
+            : base(driver)
         {
-            this.driver = driver;
-            this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(5));
-            if (this.driver.Url == ConfigurationManager.AppSettings["BaseUrl"])
-            {
-                return;
-            }
-
-            this.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
         }
 
         public IWebElement FirstCartItem
         {
             get
             {
-                return this.driver.FindElement(By.ClassName("data-automation-cartitem-name"));
+                return this.Driver.FindElement(By.ClassName("data-automation-cartitem-name"));
             }
         }
 
@@ -37,7 +23,15 @@
         {
             get
             {
-                return this.driver.FindElements(By.ClassName("data-automation-message-pricechanged"));
+                return this.Driver.FindElements(By.ClassName("data-automation-message-pricechanged"));
+            }
+        }
+
+        protected override string RelativeLocation
+        {
+            get
+            {
+                return string.Empty;
             }
         }
 
@@ -45,8 +39,8 @@
         {
             get
             {
-                this.wait.Until(d => d.FindElement(By.ClassName("data-automation-buyitem")));
-                return this.driver.FindElement(By.ClassName("data-automation-buyitem"));
+                this.Wait.Until(d => d.FindElement(By.ClassName("data-automation-buyitem")));
+                return this.Driver.FindElement(By.ClassName("data-automation-buyitem"));
             }
         }
 
@@ -54,7 +48,7 @@
         {
             get
             {
-                return this.driver.FindElement(By.LinkText("Go to admin dashboard"));
+                return this.Driver.FindElement(By.LinkText("Go to admin dashboard"));
             }
         }
 
@@ -67,7 +61,7 @@
         public AdminPageObject GoToAdmin()
         {
             this.AdminDashboardLink.Click();
-            return new AdminPageObject(this.driver);
+            return new AdminPageObject(this.Driver);
         }
     }
 }

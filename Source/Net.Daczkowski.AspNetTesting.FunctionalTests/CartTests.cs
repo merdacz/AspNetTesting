@@ -1,18 +1,12 @@
 ﻿namespace Net.Daczkowski.AspNetTesting.FunctionalTests
 {
     using System;
-    using System.Globalization;
     using System.IO;
-
     using FluentAssertions;
-
+    using Net.Daczkowski.AspNetTesting.FunctionalTests.PageObjects;
     using NUnit.Framework;
-
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Firefox;
-    using OpenQA.Selenium.IE;
-    using OpenQA.Selenium.Safari;
     using OpenQA.Selenium.Support.UI;
 
     public class CartTests
