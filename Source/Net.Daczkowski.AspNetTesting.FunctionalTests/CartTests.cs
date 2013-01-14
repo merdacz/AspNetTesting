@@ -1,6 +1,7 @@
 ﻿namespace Net.Daczkowski.AspNetTesting.FunctionalTests
 {
     using System;
+    using System.Configuration;
     using System.Globalization;
     using System.IO;
 
@@ -28,7 +29,7 @@
             // IWebDriver driver = new SafariDriver();
             driver.Manage().Window.Maximize();
 
-            driver.Navigate().GoToUrl("http://localhost/Net.Daczkowski.AspNetTesting.Web/");
+            driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
 
             wait.Until(d => d.FindElement(By.ClassName("data-automation-buyitem")));
             driver.FindElement(By.ClassName("data-automation-buyitem")).Click();
