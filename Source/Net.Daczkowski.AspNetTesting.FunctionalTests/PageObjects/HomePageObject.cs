@@ -56,6 +56,7 @@
         {
             get
             {
+                this.Wait.Until(d => d.FindElement(By.LinkText("Go to admin dashboard")));
                 return this.Driver.FindElement(By.LinkText("Go to admin dashboard"));
             }
         }
