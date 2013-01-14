@@ -5,6 +5,7 @@
     [TestFixture("FirefoxDriver")]
     [TestFixture("InternetExplorerDriver")]
     [TestFixture("ChromeDriver")]
+    [TestFixture("PhantomJsDriver")]
     public abstract class RunOnAllBrowsers : SeleniumTestBase
     {
         protected RunOnAllBrowsers(string driverName)

@@ -8,6 +8,7 @@
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
+    using OpenQA.Selenium.PhantomJS;
     using OpenQA.Selenium.Remote;
 
     public class SeleniumFactory
@@ -19,6 +20,8 @@
         private InternetExplorerDriverService internetExplorerDriverService;
 
         private ChromeDriverService chromeDriverService;
+
+        private PhantomJSDriverService phantomJsDriverService;
 
         private SeleniumFactory()
         {
@@ -57,6 +60,15 @@
 
                     driver = new RemoteWebDriver(this.chromeDriverService.ServiceUrl, DesiredCapabilities.Chrome());
                     break;
+                case "PhantomJsDriver":
+                    if (this.phantomJsDriverService == null)
+                    {
+                        this.phantomJsDriverService = PhantomJSDriverService.CreateDefaultService(GetDriverDirectory());
+                        this.phantomJsDriverService.Start();
+                    }
+
+                    driver = new RemoteWebDriver(this.phantomJsDriverService.ServiceUrl, DesiredCapabilities.PhantomJS());
+                    break;
                 default:
                     throw new NotImplementedException("Unsupported Selenium web driver. ");
             }
@@ -76,6 +88,11 @@
             if (this.internetExplorerDriverService != null)
             {
                 this.internetExplorerDriverService.Dispose();
+            }
+
+            if (this.phantomJsDriverService != null)
+            {
+                this.phantomJsDriverService.Dispose();
             }
         }
 
