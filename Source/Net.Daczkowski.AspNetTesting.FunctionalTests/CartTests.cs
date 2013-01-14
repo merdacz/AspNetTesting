@@ -15,24 +15,24 @@
         [Test]
         public void GivenCartWithProduct_WhenItsPriceChanges_ShouldRecalculateAndNotify()
         {
-            var driver = new FirefoxDriver();
+            IWebDriver driver = new FirefoxDriver();
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
 
             driver.Navigate().GoToUrl("http://localhost/Net.Daczkowski.AspNetTesting.Web/");
-            driver.FindElementByClassName("data-automation-buyitem").Click();
-            driver.FindElementByClassName("data-automation-cartitem-name").Text.Should().NotBeNullOrEmpty();
-            driver.FindElementsByClassName("data-automation-message-pricechanged").Should().BeEmpty();
-            driver.FindElementByLinkText("Go to admin dashboard").Click();
+            driver.FindElement(By.ClassName("data-automation-buyitem")).Click();
+            driver.FindElement(By.ClassName("data-automation-cartitem-name")).Text.Should().NotBeNullOrEmpty();
+            driver.FindElements(By.ClassName("data-automation-message-pricechanged")).Should().BeEmpty();
+            driver.FindElement(By.LinkText("Go to admin dashboard")).Click();
 
-            var priceField = driver.FindElementByName("newPrice");
+            var priceField = driver.FindElement(By.Name("newPrice"));
             var newPrice = decimal.Parse(priceField.GetAttribute("value"), CultureInfo.InvariantCulture) + 1;
             priceField.Clear();
             priceField.SendKeys(newPrice.ToString(CultureInfo.InvariantCulture));
-            driver.FindElementByClassName("data-automation-changeprice").Click();
+            driver.FindElement(By.ClassName("data-automation-changeprice")).Click();
 
-            driver.FindElementByLinkText("Go to home page").Click();
-            driver.FindElementsByClassName("data-automation-message-pricechanged").Should().HaveCount(1);
+            driver.FindElement(By.LinkText("Go to home page")).Click();
+            driver.FindElements(By.ClassName("data-automation-message-pricechanged")).Should().HaveCount(1);
 
             driver.Quit();
         }
