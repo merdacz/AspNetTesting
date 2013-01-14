@@ -1,7 +1,6 @@
 ﻿namespace Net.Daczkowski.AspNetTesting.FunctionalTests
 {
     using System;
-    using System.Configuration;
     using System.Globalization;
     using System.IO;
 
@@ -29,24 +28,15 @@
             // IWebDriver driver = new SafariDriver();
             driver.Manage().Window.Maximize();
 
-            driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
+            var admin = new HomePageObject(driver)
+                .BuyFirstItem()
+                .GoToAdmin();
 
-            wait.Until(d => d.FindElement(By.ClassName("data-automation-buyitem")));
-            driver.FindElement(By.ClassName("data-automation-buyitem")).Click();
-            driver.FindElement(By.ClassName("data-automation-cartitem-name")).Text.Should().NotBeNullOrEmpty();
-            driver.FindElements(By.ClassName("data-automation-message-pricechanged")).Should().BeEmpty();
-            driver.FindElement(By.LinkText("Go to admin dashboard")).Click();
+            var search = admin
+                .ChangePriceForFirstItem()
+                .GoToHomePage();
 
-            wait.Until(d => d.FindElement(By.Name("newPrice")));
-            var priceField = driver.FindElement(By.Name("newPrice"));
-            var newPrice = decimal.Parse(priceField.GetAttribute("value"), CultureInfo.InvariantCulture) + 1;
-            priceField.Clear();
-            priceField.SendKeys(newPrice.ToString(CultureInfo.InvariantCulture));
-            driver.FindElement(By.ClassName("data-automation-changeprice")).Click();
-            driver.FindElement(By.LinkText("Go to home page")).Click();
-
-            wait.Until(d => d.FindElement(By.ClassName("data-automation-message-pricechanged")));
-            driver.FindElements(By.ClassName("data-automation-message-pricechanged")).Should().HaveCount(1);
+            search.PriceChangeNotifications.Should().HaveCount(1);
 
             driver.Quit();
         }
