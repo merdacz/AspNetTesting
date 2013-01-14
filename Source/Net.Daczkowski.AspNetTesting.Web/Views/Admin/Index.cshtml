@@ -13,7 +13,7 @@
                 @using (Html.BeginForm("ChangePrice", "Admin", new { id = @product.Id }))
                 {
                     <input type="text" name="newPrice" value="@product.Price"/>
-                    <input type="submit" value="ChangePrice" />
+                    <input class="data-automation-changeprice" type="submit" value="ChangePrice" />
                 }
             </li>
         }

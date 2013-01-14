@@ -5,12 +5,12 @@
 
 @if (ViewBag.AddToCartMessage != null)
 {
-    <div class="flashmessageInfo">@ViewBag.AddToCartMessage</div>
+    <div class="flashmessageInfo data-automation-message-addedtocart">@ViewBag.AddToCartMessage</div>
 }
 
 @foreach (var message in ViewBag.PriceChangeMessage)
 {
-    <div class="flashmessageWarn">@message</div>
+    <div class="flashmessageInfo data-automation-message-pricechanged">@message</div>
 }
 
 <div class="menu">
@@ -22,7 +22,7 @@
                 <span>@product.Name (@product.Price) </span>
                 @using (Html.BeginForm("AddToCart", "Home", new { id = @product.Id }))
                 {
-                    <input type="submit" value="Buy" />
+                    <input class="data-automation-buyitem" type="submit" value="Buy" />
                 }
             </li>
         }
@@ -35,22 +35,22 @@
         @foreach (var cartItem in Model.CartItems)
         {
             <li style="width:auto">
-                <span class="productname">@cartItem.Name</span> 
+                <span class="productname data-automation-cartitem-name">@cartItem.Name</span> 
                 <span>(</span>
-                <span>@cartItem.UnitPrice</span>  
+                <span class="data-automation-cartitem-unitprice">@cartItem.UnitPrice</span>  
                 <span>*</span>
-                <span>@cartItem.Quantity</span>  
+                <span class="data-automation-cartitem-quantity">@cartItem.Quantity</span>  
                 <span>=</span>
-                <span>@cartItem.Price</span>
+                <span class="data-automation-cartitem-price">@cartItem.Price</span>
                 <span>)</span>
                 @using (Html.BeginForm("RemoveFromCart", "Home", new { id = @cartItem.Id }))
                 {
-                    <input type="submit" value="Remove" />
+                    <input class="data-automation-removefromcart" type="submit" value="Remove" />
                 }
             </li>
         }
     </ul>
-    <p class="totalpriceline">Total: <span class="totalprice">@Model.TotalPrice</span></p>
+    <p class="totalpriceline">Total: <span class="totalprice data-automation-totalprice">@Model.TotalPrice</span></p>
 </div>
 
 <div style="clear:both"></div>
