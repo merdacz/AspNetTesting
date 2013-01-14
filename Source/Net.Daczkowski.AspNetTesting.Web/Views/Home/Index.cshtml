@@ -1,0 +1,58 @@
+﻿@model Net.Daczkowski.AspNetTesting.Web.Models.LandingPageViewModel
+@{
+    ViewBag.Title = "title";
+}
+
+@if (ViewBag.AddToCartMessage != null)
+{
+    <div class="flashmessageInfo">@ViewBag.AddToCartMessage</div>
+}
+
+@foreach (var message in ViewBag.PriceChangeMessage)
+{
+    <div class="flashmessageWarn">@message</div>
+}
+
+<div class="menu">
+    <h3>Availble products</h3>
+    <ul>
+        @foreach (var product in Model.Products)
+        {
+            <li>
+                <span>@product.Name (@product.Price) </span>
+                @using (Html.BeginForm("AddToCart", "Home", new { id = @product.Id }))
+                {
+                    <input type="submit" value="Buy" />
+                }
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="cart">
+    <h3>Your cart</h3>    
+    <ul>
+        @foreach (var cartItem in Model.CartItems)
+        {
+            <li style="width:auto">
+                <span class="productname">@cartItem.Name</span> 
+                <span>(</span>
+                <span>@cartItem.UnitPrice</span>  
+                <span>*</span>
+                <span>@cartItem.Quantity</span>  
+                <span>=</span>
+                <span>@cartItem.Price</span>
+                <span>)</span>
+                @using (Html.BeginForm("RemoveFromCart", "Home", new { id = @cartItem.Id }))
+                {
+                    <input type="submit" value="Remove" />
+                }
+            </li>
+        }
+    </ul>
+    <p class="totalpriceline">Total: <span class="totalprice">@Model.TotalPrice</span></p>
+</div>
+
+<div style="clear:both"></div>
+
+@Html.ActionLink("Go to admin dashboard", "Index", "Admin")

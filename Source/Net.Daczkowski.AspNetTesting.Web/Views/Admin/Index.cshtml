@@ -1,0 +1,27 @@
+﻿@model Net.Daczkowski.AspNetTesting.Web.Models.AdminPageViewModel
+@{
+    ViewBag.Title = "title";
+}
+
+<div class="adminMenu"> 
+    <h3>Products repository</h3>
+    <ul>
+        @foreach (var product in Model.Products)
+        {
+            <li>
+                <span>@product.Name (@product.Price) </span>
+                @using (Html.BeginForm("ChangePrice", "Admin", new { id = @product.Id }))
+                {
+                    <input type="text" name="newPrice" value="@product.Price"/>
+                    <input type="submit" value="ChangePrice" />
+                }
+            </li>
+        }
+    </ul>
+</div>
+
+
+<div style="clear:both"></div>
+
+
+@Html.ActionLink("Go to home page", "Index", "Home")

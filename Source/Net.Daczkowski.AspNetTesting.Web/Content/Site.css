@@ -1,0 +1,244 @@
+body
+{
+    font-size: 1.5em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+.flashmessageWarn, .flashmessageInfo {
+    font-size: 20px;
+    padding: 1em;
+}
+
+.flashmessageWarn {
+    background: rgb(255, 187, 199);
+}
+
+.flashmessageInfo {
+    background: rgb(111, 215, 133);
+}
+
+.menu  {
+	width: 30%;
+    margin-right: 2em;
+    float: left;
+}
+
+.menu ul {
+    padding: 0 0 0 0;
+	color: #222;
+}
+
+
+.menu li:nth-child(even) {
+    background-color: #d1eaff;
+}
+
+.menu li:nth-child(odd) {
+    background-color: #90bade;   
+}
+
+.menu li 
+{
+    line-height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    list-style: none;
+}
+
+.menu li span {
+    float: left;
+    line-height: 3em;
+}
+	
+.menu input {
+    width: auto;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    font-size: 1em;
+    border: 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+	background-color: white;
+	color: #333;
+    clear: right;
+    margin-left: 1em;
+    line-height: 3em;
+}
+
+
+.cart  {
+	width: 40%;
+    margin-right: 2em;
+    float: left;
+}
+
+.cart ul {
+    padding: 0 0 0 0;
+	color: #222;
+}
+
+
+.cart li:nth-child(even) {
+    background-color: #55d94c;
+}
+
+.cart li:nth-child(odd) {
+    background-color: #b0fbab;   
+}
+
+.cart li 
+{
+    line-height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    list-style: none;
+}
+
+.cart li span {
+    float: left;
+    line-height: 3em;
+}
+	
+.cart input {
+    width: auto;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    font-size: 1em;
+    border: 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+	background-color:  rgb(241, 74, 74);;
+	color: #333;
+    clear: right;
+    margin-left: 1em;
+    line-height: 3em;
+}
+
+.cart .productname {
+    font-weight: bold;
+}
+
+.cart .totalpriceline {
+    text-align: right;
+}
+
+.cart .totalprice {
+    font-weight: bold;
+}
+
+
+.adminMenu  {
+	width: 50%;
+    margin-right: 2em;
+    float: left;
+}
+
+.adminMenu ul {
+    padding: 0 0 0 0;
+	color: #222;
+}
+
+
+.adminMenu li:nth-child(even) {
+    background-color: #c1c1c1;
+}
+
+.adminMenu li:nth-child(odd) {
+    background-color: #979797;   
+}
+
+.adminMenu li 
+{
+    line-height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    list-style: none;
+}
+
+.adminMenu li span {
+    float: left;
+    line-height: 3em;
+}
+	
+.adminMenu input {
+    width: auto;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    font-size: 1em;
+    border: 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: white;
+	color: #333;
+    clear: right;
+    margin-left: 1em;
+    line-height: 3em;
+}
+
+input[type=submit] {
+    background-color: rgb(229, 85, 0);
+}

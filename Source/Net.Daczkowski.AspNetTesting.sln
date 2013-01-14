@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Daczkowski.AspNetTesting.Web", "Net.Daczkowski.AspNetTesting.Web\Net.Daczkowski.AspNetTesting.Web.csproj", "{F33D750D-D8DC-46EF-8D12-3FD53C688FA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Daczkowski.AspNetTesting.Read", "Net.Daczkowski.AspNetTesting.Read\Net.Daczkowski.AspNetTesting.Read.csproj", "{C491F8F9-3508-4A05-8E05-9CE4877332FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Daczkowski.AspNetTesting.Logic", "Net.Daczkowski.AspNetTesting.Logic\Net.Daczkowski.AspNetTesting.Logic.csproj", "{BEE4E8A8-C762-4F8E-89A6-EA1D85F7B632}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Daczkowski.AspNetTesting.Tests", "Net.Daczkowski.AspNetTesting.Tests\Net.Daczkowski.AspNetTesting.Tests.csproj", "{2F55E4E2-ECA5-4578-819B-AC9CCC7A6387}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{4C5E9819-8256-4A54-982A-9A6D3A94E9B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DAE31C73-C680-4777-AA3D-C83055347935}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F33D750D-D8DC-46EF-8D12-3FD53C688FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33D750D-D8DC-46EF-8D12-3FD53C688FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33D750D-D8DC-46EF-8D12-3FD53C688FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33D750D-D8DC-46EF-8D12-3FD53C688FA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C491F8F9-3508-4A05-8E05-9CE4877332FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C491F8F9-3508-4A05-8E05-9CE4877332FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C491F8F9-3508-4A05-8E05-9CE4877332FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C491F8F9-3508-4A05-8E05-9CE4877332FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE4E8A8-C762-4F8E-89A6-EA1D85F7B632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE4E8A8-C762-4F8E-89A6-EA1D85F7B632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE4E8A8-C762-4F8E-89A6-EA1D85F7B632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE4E8A8-C762-4F8E-89A6-EA1D85F7B632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F55E4E2-ECA5-4578-819B-AC9CCC7A6387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F55E4E2-ECA5-4578-819B-AC9CCC7A6387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F55E4E2-ECA5-4578-819B-AC9CCC7A6387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F55E4E2-ECA5-4578-819B-AC9CCC7A6387}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BEE4E8A8-C762-4F8E-89A6-EA1D85F7B632} = {4C5E9819-8256-4A54-982A-9A6D3A94E9B1}
+		{C491F8F9-3508-4A05-8E05-9CE4877332FD} = {4C5E9819-8256-4A54-982A-9A6D3A94E9B1}
+		{F33D750D-D8DC-46EF-8D12-3FD53C688FA9} = {4C5E9819-8256-4A54-982A-9A6D3A94E9B1}
+		{2F55E4E2-ECA5-4578-819B-AC9CCC7A6387} = {DAE31C73-C680-4777-AA3D-C83055347935}
+	EndGlobalSection
+EndGlobal
